@@ -61,7 +61,7 @@ end
 local function check_domain(email, whitelist_failed)
   local oauth_domain = email:match("[^@]+@(.+)")
   -- if domain is configured, check it, if it isn't, permit request
-  if domain:len() ~= 0 then
+  if domain and (domain:len() ~= 0) then
     if not string.find(" " .. domain .. " ", " " .. oauth_domain .. " ", 1, true) then
       if whitelist_failed then
         ngx.log(ngx.ERR, email .. " is not on " .. domain .. " nor in the whitelist")
