@@ -5,6 +5,12 @@ from [Agora Games](https://github.com/agoragames/nginx-google-oauth).
 
 Fast forward to the [docker image](#docker-image) section to try it out.
 
+## Deprecated
+
+This project is no longer being maintained or supported by Cloudflare. Please
+refer to [Cloudflare Access](https://developers.cloudflare.com/access/about/)
+as an alternative to **nginx-google-oauth**.
+
 ## Installation
 
 You can copy `access.lua` to your nginx configurations, or clone the
@@ -254,7 +260,7 @@ Then open your browser at http://ngo.lol and you should get Google OAuth screen.
 
 ## Copyright
 
-* Copyright 2015-2016 CloudFlare
+* Copyright 2015-2020 Cloudflare
 * Copyright 2014-2015 Aaron Westendorf
 
 ## License
