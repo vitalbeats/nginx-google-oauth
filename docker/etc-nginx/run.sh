@@ -32,6 +32,12 @@ if [ "${LOCATIONS}" ]; then
   echo "${LOCATIONS}" > /etc/nginx/snippets/demo-locations.conf
 fi
 
+if [ "${PROXY_BUFFERING_OFF}" ]; then
+  # Disables buffering for reverse proxy location(s). Useful when client wants to do
+  # http/2 event streams like Argo workflows server.
+  perl -i -pe 'BEGIN{undef $/;} s/http\s*{/http {\n    proxy_buffering off;/' /etc/nginx/nginx.conf
+fi
+
 # Help people spot problems
 if [ "${DEBUG}" ]; then
   echo "## /etc/nginx/sites-available/default ##"

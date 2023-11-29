@@ -1,3 +1,7 @@
+# NOTE - Vital Beats fork
+
+We use `nginx-google-oauth` to add Google Oauth to various services (griffin. prometheus, ...). However, in one case there were issues, so we forked it. The issue was with Argo workflows UI, where dynamic updates (via HTTP/2 events) failed. In this fork, we disable `proxy_buffering` to avoid the issue.
+
 # nginx-google-oauth
 
 Lua module to add Google OAuth to nginx. It is based on great work
@@ -243,6 +247,7 @@ Docker image has the following env variables for configuration:
 * `LOCATIONS` can contain `location` directives that will be injected into the
   nginx configuration on container start. If not set, a demo page is served
   under `location / {...}`.
+* `PROXY_BUFFERING_OFF`: If set (to any value) then a `proxy_buffering off` directive is added to `nginx.conf`
 
 Run the image:
 
