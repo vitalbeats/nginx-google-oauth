@@ -1,7 +1,10 @@
 # debian:stretch at 2018-06-23T21:35:00Z
 FROM debian@sha256:de3eac83cd481c04c5d6c7344cd7327625a1d8b2540e82a8231b5675cef0ae5f
 
-RUN apt-get update && \
+RUN echo "deb [trusted=yes] http://archive.debian.org/debian stretch main non-free contrib" > /etc/apt/sources.list && \
+    echo 'deb-src [trusted=yes] http://archive.debian.org/debian/ stretch main non-free contrib'  >> /etc/apt/sources.list && \
+    echo 'deb [trusted=yes] http://archive.debian.org/debian-security/ stretch/updates main non-free contrib'  >> /etc/apt/sources.list && \
+    apt-get update && \
     apt-get install -y --no-install-recommends nginx-extras lua-cjson git ca-certificates && \
     rm -rf /var/lib/apt/lists/* && \
     git clone -c transfer.fsckobjects=true https://github.com/pintsized/lua-resty-http.git /tmp/lua-resty-http && \
